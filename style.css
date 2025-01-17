@@ -1,0 +1,121 @@
+/* ### triple hash comments are irrelevant to functionality ### */
+
+/* universal selector */
+* {
+    font-family: sans-serif; /* ### sample, can change ### */
+    margin: 0; /* removes margins automatically assigned by browser */
+}
+
+/* custom color palette */
+:root {
+    --custom_pink: rgb(218, 89, 126); /* ### sample, can change ### */
+    --custom_lightblue: rgb(202, 202, 255); /* ### sample, can change ### */
+    --custom_orange: rgb(250, 201, 110); /* ### sample, can change ### */
+    --custom_darkgray: rgb(113, 113, 113); /* ### sample, can change ### */
+    --custom_lightgray: rgb(185, 185, 185); /* ### sample, can change ### */
+    /* ### borders to show where elements are, remove later ### */
+    /* ### comment/uncomment borders to disable/enable ### */
+    /* --border01: 2px solid red;
+    --border02: 2px solid blue;
+    --border03: 2px solid rgb(47, 168, 47); */
+}
+
+body {
+    background-color: var(--custom_lightgray);
+    border: var(--border03); /* ### shows where element is, remove later ### */
+    height: 100%;
+    margin: auto; /* fixes body not reaching 100% of page */
+}
+
+header {
+    background-color: var(--custom_darkgray);
+    height: 90px;
+}
+
+/* "Mood Quiz" in header */
+h1 {
+    color: white;
+    text-shadow: 2px 2px black, 2px -2px black, -2px 2px black, -2px -2px black, 0 2px black, 2px 0 black, 0 -2px black, -2px 0 black; /* black border around characters */
+    font-size: 40px;
+    text-align: center;
+    line-height: 90px; /* vertically aligns text in center of header, by making equal to height of header */
+}
+
+/* each question */
+h2 {
+    color: black;
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+/* all questions and answers collectively */
+.questions {
+    border: var(--border01); /* ### shows where element is, remove later ### */
+    background-color: white;
+    width: 70%;
+    padding-top: 30px; /* set equal to .questions div padding-bottom */
+    margin: auto; /* centers to body */
+}
+
+/* each question with respective answers */
+.questions div {
+    border: var(--border02); /* ### shows where element is, remove later ### */
+    width: 30%; /* ### probably make this larger if we have longer questions ### */
+    padding-bottom: 30px; /* set equal to .questions padding-top */
+    margin: auto; /* centers to .questions div */
+}
+
+/* answers and submit buttons */
+form {
+    margin-left: 25px;
+}
+
+/* all submit buttons */
+input[type=submit] {
+    border-radius: 20px; /* makes element rounded */
+}
+
+button {
+    background-color: var(--custom_orange);
+    font-size: 15px;
+    border-radius: 12px; /* makes element rounded */
+    padding: 3px 10px;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: orange;
+}
+
+/* "reset quiz" button */
+.reset {
+    border: var(--border02); /* ### shows where element is, remove later ### */
+    width: 20%; /* ### shows where element is, remove later ### */
+    padding: 0;
+    margin: auto; /* centers to body */
+    text-align: center;
+}
+
+/* "prev" and "next" buttons */
+.carousel {
+    border: var(--border01); /* ### shows where element is, remove later ### */
+    width: 20%; /* ### shows where element is, remove later ### */
+    margin: auto; /* centers to body */
+    text-align: center;
+}
+
+footer {
+    background-color: var(--custom_darkgray);
+    height: 70px;
+    width: 100%;
+    position: absolute; /* enables use of bottom property */
+    bottom: 0;
+}
+
+footer p {
+    color: var(--custom_lightgray);
+    font-family: serif;
+    text-align: center;
+    line-height: 70px; /* vertically aligns text in center of footer, by making equal to height of footer */
+}

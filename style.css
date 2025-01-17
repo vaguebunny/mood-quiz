@@ -109,8 +109,6 @@ footer {
     background-color: var(--custom_darkgray);
     height: 70px;
     width: 100%;
-    position: absolute; /* enables use of bottom property */
-    bottom: 0;
 }
 
 footer p {

@@ -71,3 +71,37 @@ reset.addEventListener('click', function (event) {
     localStorage.clear(); // clears local storage
     location.reload(); // refreshes page
 });
+
+
+// temporary: test out secret 10th question
+// activates when clicking 'next' button
+const next = 
+
+// adds secret 10th question
+function add_secret_question () {
+    const body = document.querySelector('body');
+    const q10_form = document.createElement('form');
+    const q10_h3 = document.createElement('h3');
+    const q10_input_none = document.createElement('input');
+    const q10_label_none = document.createElement('label');
+    const q10_input_some = document.createElement('input');
+    const q10_label_some = document.createElement('label');
+    const q10_input_more = document.createElement('input');
+    const q10_label_more = document.createElement('label');
+    const q10_input_most = document.createElement('input');
+    const q10_label_most = document.createElement('label');
+
+    q10_h3.textContent = 'Secret Question 10!!??';
+    
+    body.appendChild(q10_form);
+    q10_form.appendChild(q10_form);
+    q10_form.appendChild(q10_h3);
+    q10_form.appendChild(q10_input_none);
+    q10_form.appendChild(q10_label_none);
+    q10_form.appendChild(q10_input_some);
+    q10_form.appendChild(q10_label_some);
+    q10_form.appendChild(q10_input_more);
+    q10_form.appendChild(q10_label_more);
+    q10_form.appendChild(q10_input_most);
+    q10_form.appendChild(q10_label_most);
+}

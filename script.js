@@ -71,3 +71,5 @@ reset.addEventListener('click', function (event) {
     localStorage.clear(); // clears local storage
     location.reload(); // refreshes page
 });
+
+//share button logic (use a modal)

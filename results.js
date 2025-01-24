@@ -8,18 +8,45 @@ const total_score = localStorage.getItem('total_score');
 const final_score = document.querySelector('#final_score');
 final_score.textContent = `${total_score}`;
 
-// creates variablee for depression level
-let depression_level = '';
+// creates variable for depression level
+const depression_level = rubric(total_score);
 
 // determines depression level
-if (total_score >= 1 && total_score <= 4) {
-    depression_level = 'minimal_depression'; // score 1-4: minimal depression
-} else if (total_score >= 5 && total_score <= 9) {
-    depression_level = 'mild_depression'; // score 5-9: mild depression
-} else if (total_score >= 10 && total_score <= 14) {
-    depression_level = 'moderate_depression'; // score 10-14: moderate depression
-} else if (total_score >= 15 && total_score <= 19) {
-    depression_level = 'moderately_severe_depression'; // score 15-19: moderately severe depression
-} else if (total_score >= 20 && total_score <= 27) {
-    depression_level = 'severe_depression'; // score 20-27: severe depression
+function rubric (score) {
+    if (score >= 1 && score <= 4) {
+        return 'minimal_depression'; // score 1-4: minimal depression
+    } else if (score >= 5 && score <= 9) {
+        return 'mild_depression'; // score 5-9: mild depression
+    } else if (score >= 10 && score <= 14) {
+        return 'moderate_depression'; // score 10-14: moderate depression
+    } else if (score >= 15 && score <= 19) {
+        return 'moderately_severe_depression'; // score 15-19: moderately severe depression
+    } else if (score >= 20 && score <= 27) {
+        return 'severe_depression'; // score 20-27: severe depression
+    }
+}
+
+// logic for minimal depression
+function min_dep () {
+    return 0;
+}
+
+// logic for mild depression
+function mild_dep () {
+    return 0;
+}
+
+// logic for moderate depression
+function mod_dep () {
+    return 0;
+}
+
+// logic for moderately severe depression
+function modsev_dep () {
+    return 0;
+}
+
+// logic for severe depression
+function sev_dep () {
+    return 0;
 }

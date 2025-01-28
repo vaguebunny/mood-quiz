@@ -136,19 +136,39 @@
                                  <input type="submit" value="Submit" onclick="selected(this)">
                         </div>
                     </form> 
-                </ol>    
             </div>
-        </div>
-        <div id="error_message"></div>
-        <div class="reset">
-            <button>reset quiz</button>
-        </div>
-      
+        </div><br>
 
-        <!---- change to modal button?? example in results.html -->
-        <div class="share">
-            <button>Share Quiz</button>
+   <div id="error_message">
+
+         <!-- Button trigger w/ Bootstrap  -->
+        <div class="reset">
+            <button type="button" class="btn btn-primary">Reset Quiz</button>
         </div>
+        <div class="share">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Share Quiz</button>
+        </div>
+
+            <!-- Modal to put Share Button info into -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Share This Quiz</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <code>
+                  https://vaguebunny.github.io/mood-quiz/
+                </code>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     </main>
     <footer>
             <p>This website is not representative of an official diagnosis nor should be interpreted as medical advice. <br>

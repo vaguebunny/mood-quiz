@@ -1,9 +1,8 @@
 // JavaScript file for index.html (i.e., main page)
 
-// Unresolved Issue?: Refreshing page does not reset localStorage.
+// Unresolved Issue: Refreshing page does not reset localStorage.
 //      This means that answers from prior to refreshing are saved,
-//      and could trick user into submitting without filling
-//      out all questions. Must use 'reset quiz' button to do so.
+//      and Question 10 does not appear. Must use 'reset quiz' button to do so.
 
 /* === triple equal comments split code into sections === */
 /* ### triple hash comments are irrelevant to functionality ### */
@@ -16,10 +15,11 @@
 const question10 = document.querySelector('#question10');
 question10.style.display = 'none';
 
-// Boolean value, 'true' if all questions are answered
-let completed_final = false;
+// Boolean value, 'true' if Questions 1-9 are answered
+let completed_1thru9 = false;
 
 // Boolean values, 'true' if question is answered
+// Question 10 intentionally not accounted for in scoring
 const completed = {
     q1_done: false,
     q2_done: false,
@@ -39,20 +39,21 @@ const completed = {
 function selected (radio) {
     const ques_num = radio.name; // ques_num is the 'name' property of the 'radio' button
     const score = answer_score(radio.value); // score is the numerical score
-    done(ques_num); // marks question as answered
-    update_completed_final(); // updates variable 'completed_final'
+    mark_as_done(ques_num); // marks question as answered
+    update_completed_1thru9(); // updates variable 'completed_1thru9'
     reveal_ques10(); // shows Question 10 when all other questions have been answered
 
-    // ### line below used to check value of 'completed_final' in localStorage  ###
-    // ### comment/uncomment line below to disable/enable                      ###
-    localStorage.setItem('completed_final', completed_final);
+    // ### line below used to check value of 'completed_1thru9' in localStorage ###
+    // ### comment/uncomment line below to disable/enable                       ###
+    localStorage.setItem('completed_1thru9', completed_1thru9);
 
-    // !!! don't comment line below !!!
+    // ### line below used to check question score in localStorage  ###
+    // ### comment/uncomment line below to disable/enable           ###
     localStorage.setItem(ques_num, score); // store ques_num with score in localStorage
 
     // ### line below used to check if question is done in localStorage ###
-    // ### comment/uncomment line below to disable/enable              ###
-    localStorage.setItem(`done-${ques_num}`, true);
+    // ### comment/uncomment line below to disable/enable               ###
+    // localStorage.setItem(`done-${ques_num}`, true);
 }
 
 // returns score corresponding to anwser selected
@@ -69,7 +70,7 @@ function answer_score (value) {
 }
 
 // changes Boolean values to 'true' if question is answered
-function done (question) {
+function mark_as_done (question) {
     if (question === 'ques1') {
         completed.q1_done = true;
     } else if (question === 'ques2') {
@@ -91,15 +92,15 @@ function done (question) {
     }
 }
 
-// updates variable 'completed_final', even if value doesn't change
-function update_completed_final () {
+// updates variable 'completed_1thru9', even if value doesn't change
+function update_completed_1thru9 () {
     const completed_values = Object.values(completed)   // array of the values in object 'completed'
     let updated = false;                                // new Boolean variable, defaulted to 'false'
     updated = completed_values.every(checkTrue);        // checks if every element in 'completed_values' is 'true'
-    completed_final = updated;                          // 'completed_final' is updated; either stays 'false', or turns and stays 'true'
+    completed_1thru9 = updated;                          // 'completed_1thru9' is updated; either stays 'false', or turns and stays 'true'
     // ### line below used to check 'completed_values' in localStorage  ###
     // ### comment/uncomment line below to disable/enable               ###
-    localStorage.setItem('comp_vals', completed_values);
+    localStorage.setItem('status_1thru9', completed_values);
 }
 
 // checks if passed argument is 'true'
@@ -107,9 +108,12 @@ function checkTrue(item) {
     return item; // 'item' is already a Boolean by default
 }
 
+
+/* === LOGIC FOR QUESTION 10 === */
+
 // shows Question 10 when all other questions have been answered
 function reveal_ques10 () {
-    if (completed_final === true) {
+    if (completed_1thru9 === true) {
         question10.style.display = 'block';
     }
 }
@@ -125,11 +129,10 @@ const question_count = 9; // total number of questions
 // submission logic
 function submission (event) {
     event.preventDefault(); // prevents default, which is page refreshing
-    // if (all_answered()) { // !!! OBSELETE: function 'all_answered' replaced with better logic system !!!
-    if (completed_final === true) {
+    if (completed_1thru9 === true) {
         calculate_total_score(); // calculate total score, and store in localStorage
         redirect_to_results(event); // go to Results page
-    } else { // else if not all questions are answered
+    } else { // else if Questions 1-9 are not all answered
         const error_message = document.querySelector('#error_message');
         error_message.textContent = 'Please answer all questions'; // display error message
     }
@@ -158,7 +161,7 @@ const reset = document.querySelector('.reset'); // selects Reset div button
 
 reset.addEventListener('click', function () {
     reset_completed(); // resets all values in object 'completed' to 'false'
-    completed_final = false; // means that not all questions have been answered
+    completed_1thru9 = false; // means that Questions 1-9 have not all been answered
     localStorage.clear(); // clears localStorage
     location.reload(); // refreshes page
 });

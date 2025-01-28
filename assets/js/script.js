@@ -41,7 +41,7 @@ function selected (radio) {
     const score = answer_score(radio.value); // score is the numerical score
     mark_as_done(ques_num); // marks question as answered
     update_completed_1thru9(); // updates variable 'completed_1thru9'
-    reveal_ques10(); // shows Question 10 when all other questions have been answered
+    reveal_ques10(); // shows Question 10 if all other questions have been answered
 
     // ### line below used to check value of 'completed_1thru9' in localStorage ###
     // ### comment/uncomment line below to disable/enable                       ###
@@ -111,7 +111,7 @@ function checkTrue(item) {
 
 /* === LOGIC FOR QUESTION 10 === */
 
-// shows Question 10 when all other questions have been answered
+// shows Question 10 if all other questions have been answered
 function reveal_ques10 () {
     if (completed_1thru9 === true) {
         question10.style.display = 'block';

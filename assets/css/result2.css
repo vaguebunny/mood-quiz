@@ -1,11 +1,3 @@
-/* ### triple hash comments are irrelevant to functionality ### */
-
-/* universal selector */
-* {
-    font: 1rem/1.5 var(--bs-font-sans-serif);
-    margin: 0; /* removes margins automatically assigned by browser */
-}
-
 :root {
 --lightest: var(--bs-gray-100 );
 --light: var(--bs-success-border-subtle);
@@ -16,12 +8,16 @@
 --border03: 5px solid var(--bs-dark);
 }
 
+* {
+    font: 1rem/1.5 var(--bs-font-sans-serif);
+    margin: 0; 
+}
 
 body {
     background-color: var(--light);
     height: 100vh;
     width: 100vw;
-    margin: auto 0; /* fixes body not reaching 100% of page */
+    margin: auto 0;
     padding: 0;
 
 }
@@ -42,7 +38,7 @@ main{
     padding-top: 20px;
     padding-bottom: 20px;
 }
-/* "Mood Quiz" in header */
+
 h1 {
     color: var(--light);
     text-shadow: 2px 2px black, 2px -2px black, -2px 2px black, -2px -2px black, 0 2px black, 2px 0 black, 0 -2px black, -2px 0 black; /* black border around characters */
@@ -50,7 +46,6 @@ h1 {
     text-align: center;
 }
 
-/* main question */
 h2 {
     color: var(--darkest);
     font-weight: normal;
@@ -61,7 +56,6 @@ h2 {
     padding-bottom: 2%;
 }
 
-/*individual questions*/
 h3{
     color: var(--darkest);
     font-size: 16px;
@@ -71,66 +65,45 @@ div {
     padding-top: 30px;
 }
 
-/* all questions and answers collectively */
 .questions {
     border: var(--border01); 
     background-color: var(--lightest);
     width: 80%;
-    padding-top: 30px; /* set equal to .questions div padding-bottom */
-    margin: auto; /* centers to body */
+    padding-top: 30px; 
+    margin: auto; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
 }
 
-/* each question with respective answers */
 .questions div {
     width: 75%; 
-    padding-bottom: 30px; /* set equal to .questions padding-top */
-    margin: auto; /* centers to .questions div */
+    padding-bottom: 30px; 
+    margin: auto; 
+    flex: 1 1 30%; 
+    margin: 10px; 
 }
 
-
-/* answers and submit buttons */
 form {
     margin-left: 25px;
 }
 
-/* all submit buttons */
 input[type=submit] {
-    border-radius: 20px; /* makes element rounded */
+    border-radius: 20px;
     padding: 2.5%;
     background-color: var(--light);
 }
 
-button {
-    background-color: var(--dark);
-    color: var(--light);
-    border-radius: 12px; /* makes element rounded */
-    padding: 3%;
-
-}
-
-button:hover {
-    background-color: rgb(255, 223, 162);
-    color: var(--bs-primary-text-emphasis);
-}
-
-/* "reset quiz" button */
 .reset {
-    width: 20%; /* ### shows where element is, remove later ### */
+    width: 20%;
     padding: 0;
-    margin: auto; /* centers to body */
-    text-align: center;
-}
-
-/* "prev" and "next" buttons */
-.carousel {
-    width: 20%; /* ### shows where element is, remove later ### */
-    margin: auto; /* centers to body */
+    margin: auto;
     text-align: center;
 }
 
 .share{
-    width: 20%; /* ### shows where element is, remove later ### */
-    margin: auto; /* centers to body */
+    width: 20%;
+    margin: auto;
     text-align: center;
 }
 
@@ -138,14 +111,50 @@ button:hover {
     border: var(--border01); 
     background-color: var(--lightest);
     width: 80%;
-    padding-top: 30px; /* set equal to .questions div padding-bottom */
-    margin: auto; /* centers to body */
+    padding-top: 30px;
+    margin: auto;
 }
 
 .result p{
     width: 75%; 
     padding-bottom: 30px;
     margin: auto;
+}
+
+#final_score{
+    font-weight: bold;
+    color: var(--dark);
+}
+
+#mood_name{
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.bold{
+    font-weight: bold;
+    color: var(--dark);
+}
+
+ul{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px auto;
+}
+
+li{
+    list-style: none;
+}
+
+li a{
+    color: var(--dark);
+    text-decoration: none;
+    padding: 10px;
+}
+
+a:hover{
+    color: var(--bs-green);
 }
 
 table, th, td {
@@ -156,29 +165,54 @@ table, th, td {
     width: 50%;
   }
 
-  th{
+th{
     background-color: var(--dark);
     color: var(--lightest);
   }
 
-  td{
+td{
     background-color: var(--light);
     color: var(--darkest);
 }
 
 footer{
     border-top: var(--border03);
-    padding-bottom: 100vh; /* pushes footer to bottom of page */
+    padding-bottom: 100vh;
 }
 footer p {
     padding: 2%;
     color: var(--light);
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
-    line-height: 5vh; /* vertically aligns text in center of footer, by making equal to height of footer */
+    line-height: 5vh;
 }
 
 /*make media queries for mobile responsiveness*/
 @media only screen and (max-width: 600px) {
+    .questions {
+        flex-direction: column; 
+        width: 100%; 
+    }
+    
+    .questions div {
+        flex: 1 1 100%; 
+        margin: 5px 0;
+    }
 
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2, h3 {
+        font-size: 1.5rem; 
+    }
+
+    input[type=submit], button {
+        width: 100%; 
+        padding: 10px; 
+    }
+
+    .reset, .share {
+        width: 100%; 
+    }
 }

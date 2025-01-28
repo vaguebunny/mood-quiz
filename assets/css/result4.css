@@ -121,7 +121,7 @@ input[type=submit] {
     margin: auto;
 }
 
-#final_score{
+#display_total_score{
     font-weight: bold;
     color: var(--dark);
 }

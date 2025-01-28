@@ -20,6 +20,7 @@ question10.style.display = 'none';
 let completed_final = false;
 
 // Boolean values, 'true' if question is answered
+// Question 10 intentionally not accounted for in scoring
 const completed = {
     q1_done: false,
     q2_done: false,
@@ -52,7 +53,7 @@ function selected (radio) {
 
     // ### line below used to check if question is done in localStorage ###
     // ### comment/uncomment line below to disable/enable              ###
-    localStorage.setItem(`done-${ques_num}`, true);
+    // localStorage.setItem(`done-${ques_num}`, true);
 }
 
 // returns score corresponding to anwser selected
@@ -107,6 +108,9 @@ function checkTrue(item) {
     return item; // 'item' is already a Boolean by default
 }
 
+
+/* === LOGIC FOR QUESTION 10 === */
+
 // shows Question 10 when all other questions have been answered
 function reveal_ques10 () {
     if (completed_final === true) {
@@ -125,7 +129,6 @@ const question_count = 9; // total number of questions
 // submission logic
 function submission (event) {
     event.preventDefault(); // prevents default, which is page refreshing
-    // if (all_answered()) { // !!! OBSELETE: function 'all_answered' replaced with better logic system !!!
     if (completed_final === true) {
         calculate_total_score(); // calculate total score, and store in localStorage
         redirect_to_results(event); // go to Results page

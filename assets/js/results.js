@@ -20,40 +20,21 @@ mood_name.textContent = depression_level;
 
 // function for determining depression level
 function rubric (score) {
+    const result = document.querySelector('#result'); // selects result CSS link
     if (score >= 1 && score <= 4) {
         depression_level = 'minimal depression'; // score 1-4: minimal depression
+        result.href = "./assets/css/result1.css"; // applies result1 CSS to HTML
     } else if (score >= 5 && score <= 9) {
         depression_level = 'mild depression'; // score 5-9: mild depression
+        result.href = "./assets/css/result1.css"; // applies result1 CSS to HTML
     } else if (score >= 10 && score <= 14) {
         depression_level = 'moderate depression'; // score 10-14: moderate depression
+        result.href = "./assets/css/result1.css"; // applies result1 CSS to HTML
     } else if (score >= 15 && score <= 19) {
         depression_level = 'moderately severe depression'; // score 15-19: moderately severe depression
+        result.href = "./assets/css/result1.css"; // applies result1 CSS to HTML
     } else if (score >= 20 && score <= 27) {
         depression_level = 'severe depression'; // score 20-27: severe depression
+        result.href = "./assets/css/result1.css"; // applies result1 CSS to HTML
     }
-}
-
-// logic for minimal depression
-function min_dep () {
-    return 0;
-}
-
-// logic for mild depression
-function mild_dep () {
-    return 0;
-}
-
-// logic for moderate depression
-function mod_dep () {
-    return 0;
-}
-
-// logic for moderately severe depression
-function modsev_dep () {
-    return 0;
-}
-
-// logic for severe depression
-function sev_dep () {
-    return 0;
 }

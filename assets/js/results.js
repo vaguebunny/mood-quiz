@@ -21,7 +21,10 @@ mood_name.textContent = depression_level;
 // function for determining depression level and CSS
 function rubric (score) {
     const result = document.querySelector('#result'); // selects result CSS link
-    if (score >= 0 && score <= 4) {
+    if (score === 0) {
+        depression_level = 'no depression'; // score 0: no depression
+        result.href = "./assets/css/result1.css"; // applies result1 CSS to HTML - currently blue
+    } else if (score >= 1 && score <= 4) {
         depression_level = 'minimal depression'; // score 1-4: minimal depression
         result.href = "./assets/css/result1.css"; // applies result1 CSS to HTML - currently blue
     } else if (score >= 5 && score <= 9) {

@@ -35,13 +35,13 @@ const completed = {
 
 /* === LOGIC FOR SELECTING AN ANSWER === */
 
-// stores question number with score (i.e., onclick function for radio buttons)
-function selected (radio) {
+// stores question number with score (i.e., onclick function for Questions 1-9 radio buttons)
+function choice_selected (radio) {
     const ques_num = radio.name; // ques_num is the 'name' property of the 'radio' button
     const score = answer_score(radio.value); // score is the numerical score
     mark_as_done(ques_num); // marks question as answered
     update_completed_1thru9(); // updates variable 'completed_1thru9'
-    reveal_ques10(); // shows Question 10 when all other questions have been answered
+    reveal_ques10(); // shows Question 10 if all other questions have been answered
 
     // ### line below used to check value of 'completed_1thru9' in localStorage ###
     // ### comment/uncomment line below to disable/enable                       ###
@@ -49,7 +49,7 @@ function selected (radio) {
 
     // ### line below used to check question score in localStorage  ###
     // ### comment/uncomment line below to disable/enable           ###
-    localStorage.setItem(ques_num, score); // store ques_num with score in localStorage
+    localStorage.setItem(ques_num, score);
 
     // ### line below used to check if question is done in localStorage ###
     // ### comment/uncomment line below to disable/enable               ###
@@ -111,11 +111,22 @@ function checkTrue(item) {
 
 /* === LOGIC FOR QUESTION 10 === */
 
-// shows Question 10 when all other questions have been answered
+// determines if Question 10 has been answered
+let q10_done = false;
+
+// shows Question 10 if all other questions have been answered
 function reveal_ques10 () {
     if (completed_1thru9 === true) {
         question10.style.display = 'block';
     }
+}
+
+// confirms if Question 10 was answered (i.e., onclick function for Question 10 radio buttons)
+function q10_selected (radio) {
+    q10_done = true; // confirms that Question 10 has been answered
+    // ### line below used to check question score in localStorage  ###
+    // ### comment/uncomment line below to disable/enable           ###
+    localStorage.setItem('done-q10', q10_done);
 }
 
 
@@ -129,7 +140,8 @@ const question_count = 9; // total number of questions
 // submission logic
 function submission (event) {
     event.preventDefault(); // prevents default, which is page refreshing
-    if (completed_1thru9 === true) {
+    // if (completed_1thru9 === true) {
+    if (q10_done === true) {
         calculate_total_score(); // calculate total score, and store in localStorage
         redirect_to_results(event); // go to Results page
     } else { // else if Questions 1-9 are not all answered
@@ -162,6 +174,7 @@ const reset = document.querySelector('.reset'); // selects Reset div button
 reset.addEventListener('click', function () {
     reset_completed(); // resets all values in object 'completed' to 'false'
     completed_1thru9 = false; // means that Questions 1-9 have not all been answered
+    q10_done = false; // means that Question 10 has not been answered
     localStorage.clear(); // clears localStorage
     location.reload(); // refreshes page
 });

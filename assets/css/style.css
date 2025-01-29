@@ -96,6 +96,11 @@ input[type=submit] {
     background-color: var(--light);
 }
 
+#error_message {
+    color: red;
+    margin-left: 7%;
+}
+
 .reset, .share {
     width: 20%;
     padding: 2%;
